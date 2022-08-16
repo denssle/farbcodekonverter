@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
     <title>Lotgd Farbkonvertierungstool</title>
     <style type="text/css">
@@ -35,6 +35,8 @@
 
     <textarea name="ausgabe_textarea" id="ausgabe_textarea"></textarea>
 
+    <ul id="unordered_list"></ul>
+
     <span>
         Made with HTML, CSS, JS & ❤
     </span>
@@ -48,18 +50,21 @@
 
     function onInput(event) {
         event.preventDefault();
-        // if (event.inputType === "insertText") {}
         handleInput(event.target.value)
     }
 
     function handleInput(input) {
         let result = "";
+        let li_string = "";
         input.split(/\r?\n|\r|\n/g).forEach(value => {
             if (value) {
-                result += "[" + value + "]\r\n";
+                const formatted = "[" + value + "]\r\n";
+                result += formatted;
+                li_string += "<li style='color: " + value + "'>" + formatted + "</li>";
             }
         })
         document.getElementById("ausgabe_textarea").value = result;
+        document.getElementById("unordered_list").innerHTML = li_string;
     }
 </script>
 
