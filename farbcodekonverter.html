@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lotgd Farbkonvertierungstool</title>
+    <style type="text/css">
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: space-between;
+            flex-direction: column;
+        }
+
+        textarea {
+            min-width: 30vw;
+            min-height: 40vw;
+        }
+    </style>
+</head>
+<body>
+
+<form onsubmit="onSubmit(event)" oninput="onInput(event)">
+    <span>
+        Eingabe (bitte mit Enter trennen)
+    </span>
+
+    <textarea name="code_input"></textarea>
+
+
+    <input type="submit" value="Konvertiere Codes">
+    
+    <span>
+        Ausgabe
+    </span>
+
+    <textarea name="ausgabe_textarea" id="ausgabe_textarea"></textarea>
+
+    <span>
+        Made with HTML, CSS, JS & ❤
+    </span>
+</form>
+
+<script>
+    function onSubmit(event) {
+        event.preventDefault();
+        handleInput(event.target["code_input"].value)
+    }
+
+    function onInput(event) {
+        event.preventDefault();
+        // if (event.inputType === "insertText") {}
+        handleInput(event.target.value)
+    }
+
+    function handleInput(input) {
+        let result = "";
+        input.split(/\r?\n|\r|\n/g).forEach(value => {
+            if (value) {
+                result += "[" + value + "]\r\n";
+            }
+        })
+        document.getElementById("ausgabe_textarea").value = result;
+    }
+</script>
+
+</body>
+</html>
