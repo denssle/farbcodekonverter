@@ -37,9 +37,10 @@
 
     <ul id="unordered_list"></ul>
 
-    <span>
-        Made with HTML, CSS, JS & ❤
-    </span>
+    <div>
+        <p>Made with HTML, CSS, JS & ❤</p>
+        <p>Version 3</p>
+    </div>
 </form>
 
 <script>
@@ -58,7 +59,7 @@
         let li_string = "";
         input.split(/\r?\n|\r|\n/g).forEach(value => {
             if (value) {
-                const formatted = "[" + value + "]\r\n";
+                const formatted = "#[" + value.replaceAll("#", "") + "]\r\n";
                 result += formatted;
                 li_string += "<li style='color: " + value + "'>" + formatted + "</li>";
             }
